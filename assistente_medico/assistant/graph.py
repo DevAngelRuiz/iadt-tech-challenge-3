@@ -2,11 +2,16 @@
 
 Grafo do assistente médico:
 
-    validar_pergunta ──(bloqueada)──────────────────────────┐
+    validar_pergunta ──(bloqueada|atalho)───────────────────┐
         │ (permitida)                                       │
         ▼                                                   ▼
     carregar_paciente → verificar_exames → recuperar_contexto
         → gerar_resposta → aplicar_guardrails → emitir_alertas → finalizar
+
+Atalhos (sem chamar a LLM) evitam alucinação do modelo 1B fora do domínio:
+- pedidos proibidos (prescrição / PII / diagnóstico definitivo);
+- perguntas meta ("quem é você?");
+- perguntas fora de escopo ("que dia é hoje?").
 
 Cada nó registra sua etapa para auditoria; o nó final grava o log JSONL.
 """
@@ -23,7 +28,14 @@ from assistente_medico.assistant import guardrails
 from assistente_medico.assistant.explainability import build_source_list
 from assistente_medico.assistant.llm import AssistantLLM
 from assistente_medico.assistant.logging_audit import AuditLogger
-from assistente_medico.assistant.prompts import SYSTEM_PROMPT, build_user_prompt
+from assistente_medico.assistant.prompts import (
+    IDENTITY_RESPONSE,
+    OUT_OF_SCOPE_RESPONSE,
+    SYSTEM_PROMPT,
+    build_user_prompt,
+    is_meta_question,
+    is_out_of_scope_question,
+)
 from assistente_medico.assistant.retrieval import KnowledgeBase, format_context_docs
 from assistente_medico.db.repository import HospitalRepository
 
@@ -51,6 +63,7 @@ class AssistantState(TypedDict, total=False):
     fontes: list[str]
     guardrail_violations: list[str]
     bloqueada: bool
+    atalho: bool  # meta ou fora de escopo (sem LLM)
     requer_validacao_humana: bool
     alertas_emitidos: list[dict[str, Any]]
     etapas: Annotated[list[str], _append]
@@ -79,13 +92,42 @@ class MedicalAssistantGraph:
         if not result.allowed:
             return {
                 "bloqueada": True,
+                "atalho": False,
                 "resposta_final": result.final_text,
                 "guardrail_violations": result.violations,
                 "fontes": ["politica_seguranca"],
                 "requer_validacao_humana": True,
                 "etapas": ["validar_pergunta: BLOQUEADA pelos limites de atuação"],
             }
-        return {"bloqueada": False, "etapas": ["validar_pergunta: permitida"]}
+        if is_meta_question(state["pergunta"]):
+            return {
+                "bloqueada": False,
+                "atalho": True,
+                "resposta_final": IDENTITY_RESPONSE,
+                "llm_raw": IDENTITY_RESPONSE,
+                "fontes": ["politica_seguranca"],
+                "requer_validacao_humana": True,
+                "guardrail_violations": [],
+                "alertas_emitidos": [],
+                "etapas": ["validar_pergunta: atalho meta — identidade"],
+            }
+        if is_out_of_scope_question(state["pergunta"]):
+            return {
+                "bloqueada": False,
+                "atalho": True,
+                "resposta_final": OUT_OF_SCOPE_RESPONSE,
+                "llm_raw": OUT_OF_SCOPE_RESPONSE,
+                "fontes": ["politica_seguranca"],
+                "requer_validacao_humana": True,
+                "guardrail_violations": [],
+                "alertas_emitidos": [],
+                "etapas": ["validar_pergunta: atalho fora de escopo"],
+            }
+        return {
+            "bloqueada": False,
+            "atalho": False,
+            "etapas": ["validar_pergunta: permitida"],
+        }
 
     def _carregar_paciente(self, state: AssistantState) -> dict[str, Any]:
         paciente = self.repo.get_paciente(state["paciente_id"]) if state.get("paciente_id") else None
@@ -112,10 +154,9 @@ class MedicalAssistantGraph:
         }
 
     def _recuperar_contexto(self, state: AssistantState) -> dict[str, Any]:
+        # Busca só pela pergunta (sem concatenar hipótese do paciente), para
+        # não puxar sempre o mesmo protocolo do caso clínico.
         query = state["pergunta"]
-        paciente = state.get("paciente") or {}
-        if paciente.get("hipotese_diagnostica"):
-            query = f"{query} {paciente['hipotese_diagnostica']}"
         docs = self.kb.search(query, top_k=3)
         return {
             "context_docs": docs,
@@ -222,6 +263,7 @@ class MedicalAssistantGraph:
                 "paciente_id": state.get("paciente_id", ""),
                 "pergunta": state["pergunta"],
                 "bloqueada_pelo_guardrail": state.get("bloqueada", False),
+                "atalho": state.get("atalho", False),
                 "backend_llm": self.llm.backend,
                 "modelo_llm": self.llm.config.get("model"),
                 "resposta_bruta_llm": state.get("llm_raw", ""),
@@ -237,6 +279,11 @@ class MedicalAssistantGraph:
 
     # ── Montagem ───────────────────────────────────────────────────────
 
+    def _route_after_validation(self, state: AssistantState) -> str:
+        if state.get("bloqueada") or state.get("atalho"):
+            return "atalho"
+        return "permitida"
+
     def _build(self):
         builder = StateGraph(AssistantState)
         builder.add_node("validar_pergunta", self._validar_pergunta)
@@ -251,8 +298,8 @@ class MedicalAssistantGraph:
         builder.add_edge(START, "validar_pergunta")
         builder.add_conditional_edges(
             "validar_pergunta",
-            lambda state: "bloqueada" if state.get("bloqueada") else "permitida",
-            {"bloqueada": "finalizar", "permitida": "carregar_paciente"},
+            self._route_after_validation,
+            {"atalho": "finalizar", "permitida": "carregar_paciente"},
         )
         builder.add_edge("carregar_paciente", "verificar_exames")
         builder.add_edge("verificar_exames", "recuperar_contexto")

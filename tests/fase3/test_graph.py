@@ -70,3 +70,24 @@ def test_auditoria_gravada(assistant):
     assert entry["etapas"]
     assert entry["requer_validacao_humana"] is True
     assert "resposta_final" in entry and "resposta_bruta_llm" in entry
+
+
+def test_pergunta_meta_identidade(assistant):
+    result = assistant.ask(
+        pergunta="Quem é você? E o que pode fazer?",
+        paciente_id="PAC-001",
+    )
+    assert not result["bloqueada_pelo_guardrail"]
+    assert "assistente médico" in result["resposta"].lower()
+    assert "BI-RADS" not in result["resposta"]
+    assert "politica_seguranca" in result["fontes"]
+    assert any("meta" in e for e in result["etapas"])
+
+
+def test_pergunta_fora_de_escopo(assistant):
+    result = assistant.ask(pergunta="Que dia é hoje?")
+    assert not result["bloqueada_pelo_guardrail"]
+    assert "fora do meu escopo" in result["resposta"].lower()
+    assert "exame pendente" not in result["resposta"].lower()
+    assert any("fora de escopo" in e for e in result["etapas"])
+    assert "politica_seguranca" in result["fontes"]
