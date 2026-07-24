@@ -9,7 +9,7 @@ langgraph>=0.2
 datasets>=2.19
 huggingface_hub>=0.23
 
-# Fine-tuning LoRA em Apple Silicon (Mac M-series)
+# Fine-tuning LoRA
 mlx>=0.21; platform_machine == "arm64" and sys_platform == "darwin"
 mlx-lm>=0.21; platform_machine == "arm64" and sys_platform == "darwin"
 

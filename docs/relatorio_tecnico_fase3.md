@@ -59,7 +59,7 @@ cache bruto de curadoria em `data/raw/` (ignorado no git).
 | Camadas com LoRA | 8 (últimas) |
 | Learning rate | 1e-5 |
 | Max seq length | 1024 |
-| Duração | ~8 minutos (Mac Apple Silicon, pico ~3 GB RAM) |
+| Duração | ~8 minutos |
 
 A escolha de um modelo 1B quantizado em 4 bits + LoRA permite treinar e servir
 o modelo localmente em um notebook de 16 GB, sem enviar dados médicos à nuvem.

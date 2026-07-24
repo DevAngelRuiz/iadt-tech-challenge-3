@@ -39,7 +39,7 @@ def train_lora(
 ) -> dict:
     """Roda o fine-tuning LoRA e retorna metadados do treino.
 
-    Parâmetros conservadores por padrão (Mac 16 GB): 300 iterações,
+    Parâmetros conservadores por padrão,
     batch 2, LoRA nas últimas 8 camadas.
     """
     ensure_dirs()
