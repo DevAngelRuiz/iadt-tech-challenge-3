@@ -1,0 +1,18 @@
+{
+  "hospital_examples": 72,
+  "pubmedqa_examples": 800,
+  "train": 712,
+  "valid": 80,
+  "test": 80,
+  "paths": {
+    "train": "/Users/gustavoscarpim/Documents/projetos/fiap/iadt/iadt-tech-challenge-3/data/training/train.jsonl",
+    "valid": "/Users/gustavoscarpim/Documents/projetos/fiap/iadt/iadt-tech-challenge-3/data/training/valid.jsonl",
+    "test": "/Users/gustavoscarpim/Documents/projetos/fiap/iadt/iadt-tech-challenge-3/data/training/test.jsonl"
+  },
+  "hospital_docs": {
+    "protocolos.json": "/Users/gustavoscarpim/Documents/projetos/fiap/iadt/iadt-tech-challenge-3/data/hospital/protocolos.json",
+    "faq_medicos.json": "/Users/gustavoscarpim/Documents/projetos/fiap/iadt/iadt-tech-challenge-3/data/hospital/faq_medicos.json",
+    "templates_documentos.json": "/Users/gustavoscarpim/Documents/projetos/fiap/iadt/iadt-tech-challenge-3/data/hospital/templates_documentos.json"
+  },
+  "raw_cache": "/Users/gustavoscarpim/Documents/projetos/fiap/iadt/iadt-tech-challenge-3/data/raw/curadoria_bruta.jsonl"
+}

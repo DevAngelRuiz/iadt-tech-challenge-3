@@ -1,0 +1,32 @@
+[
+  {
+    "id": "TPL-LAUDO-001",
+    "tipo": "laudo",
+    "titulo": "Modelo de laudo de mamografia",
+    "conteudo": "LAUDO DE MAMOGRAFIA — {hospital}\nIdentificação: [NOME_REMOVIDO], registro [PRONTUARIO_REMOVIDO].\nIndicação: rastreamento.\nAchados: parênquima mamário de densidade {densidade}. {achados}\nClassificação: BI-RADS {birads}.\nConclusão/Recomendação: {recomendacao}.\nEste laudo deve ser interpretado pelo médico solicitante."
+  },
+  {
+    "id": "TPL-LAUDO-002",
+    "tipo": "laudo",
+    "titulo": "Modelo de laudo de tomografia de crânio",
+    "conteudo": "LAUDO DE TC DE CRÂNIO SEM CONTRASTE — {hospital}\nIdentificação: [NOME_REMOVIDO].\nTécnica: cortes axiais sem contraste.\nAchados: {achados}\nImpressão: {impressao}.\nCorrelação clínica é indispensável."
+  },
+  {
+    "id": "TPL-RECEITA-001",
+    "tipo": "receita",
+    "titulo": "Modelo de receita ambulatorial",
+    "conteudo": "RECEITUÁRIO — {hospital}\nPaciente: [NOME_REMOVIDO]\nUso {via}:\n1. {medicamento} — {posologia} — {duracao}.\nOrientações: {orientacoes}\nAssinatura e carimbo do médico prescritor (obrigatório): ______________\nDocumento inválido sem assinatura do profissional habilitado."
+  },
+  {
+    "id": "TPL-PROC-001",
+    "tipo": "procedimento",
+    "titulo": "Checklist de procedimento — passagem de cateter venoso central",
+    "conteudo": "PROCEDIMENTO: passagem de CVC — {hospital}\n1. Confirmar indicação e consentimento informado;\n2. Higiene das mãos e paramentação estéril completa;\n3. Antissepsia com clorexidina alcoólica;\n4. Punção guiada por ultrassom quando disponível;\n5. Confirmar posicionamento com radiografia antes do uso;\n6. Registrar procedimento e intercorrências em prontuário."
+  },
+  {
+    "id": "TPL-PROC-002",
+    "tipo": "procedimento",
+    "titulo": "Checklist de cirurgia segura (adaptado OMS)",
+    "conteudo": "CHECKLIST DE CIRURGIA SEGURA — {hospital}\nAntes da indução: confirmar identidade, sítio cirúrgico, procedimento e alergias.\nAntes da incisão: time-out com toda a equipe; confirmar antibioticoprofilaxia (PROTO-006).\nAntes da saída da sala: contagem de compressas e instrumentais; identificar amostras; registrar pendências para recuperação."
+  }
+]

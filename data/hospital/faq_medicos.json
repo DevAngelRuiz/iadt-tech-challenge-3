@@ -1,0 +1,77 @@
+[
+  {
+    "pergunta": "Qual o tempo máximo para iniciar antibiótico na sepse?",
+    "resposta": "Pelo protocolo interno PROTO-001, a antibioticoterapia empírica deve ser iniciada em até 60 minutos da suspeita de sepse, após coleta de lactato e hemoculturas. A escolha do esquema é do médico plantonista.",
+    "fonte": "PROTO-001"
+  },
+  {
+    "pergunta": "Quando o escore HEART indica acionamento da cardiologia?",
+    "resposta": "Escore HEART >= 7 caracteriza alto risco e indica acionamento imediato da cardiologia, conforme PROTO-002. Entre 4 e 6, manter observação com troponina seriada.",
+    "fonte": "PROTO-002"
+  },
+  {
+    "pergunta": "Quando indicar profilaxia farmacológica de TEV em paciente clínico?",
+    "resposta": "Escore de Pádua >= 4 indica profilaxia farmacológica, salvo contraindicações como sangramento ativo ou plaquetas < 50.000 (PROTO-003). Nesses casos, usar profilaxia mecânica.",
+    "fonte": "PROTO-003"
+  },
+  {
+    "pergunta": "Como conduzir hipoglicemia em paciente consciente internado?",
+    "resposta": "Ofertar 15 g de carboidrato de ação rápida por via oral e repetir a glicemia capilar em 15 minutos, repetindo o ciclo até > 70 mg/dL (PROTO-004). Notificar o médico responsável para revisão do esquema hipoglicemiante.",
+    "fonte": "PROTO-004"
+  },
+  {
+    "pergunta": "Qual a faixa etária do rastreamento mamográfico populacional?",
+    "resposta": "Mamografia bienal para mulheres de 50 a 69 anos, conforme PROTO-005. Pacientes de alto risco devem ser avaliadas individualmente pelo mastologista.",
+    "fonte": "PROTO-005"
+  },
+  {
+    "pergunta": "O resultado BI-RADS 4 obriga biópsia?",
+    "resposta": "BI-RADS 4 ou 5 indica encaminhamento para biópsia segundo o PROTO-005. A confirmação diagnóstica é sempre histopatológica.",
+    "fonte": "PROTO-005"
+  },
+  {
+    "pergunta": "Quando administrar a antibioticoprofilaxia cirúrgica?",
+    "resposta": "Em até 60 minutos antes da incisão, com dose adicional se a cirurgia durar mais de 4 horas ou houver sangramento > 1500 mL (PROTO-006).",
+    "fonte": "PROTO-006"
+  },
+  {
+    "pergunta": "Preciso suspender metformina antes de exame com contraste?",
+    "resposta": "Em pacientes com TFG < 45, o PROTO-007 orienta suspensão temporária da metformina, com reintrodução após 48 horas mediante reavaliação da função renal pelo médico assistente.",
+    "fonte": "PROTO-007"
+  },
+  {
+    "pergunta": "Qual a janela para trombólise no AVC isquêmico?",
+    "resposta": "Até 4,5 horas do início dos sintomas, após TC excluir hemorragia e revisão de contraindicações (PROTO-008). A indicação é decisão do neurologista.",
+    "fonte": "PROTO-008"
+  },
+  {
+    "pergunta": "Posso dar alta com exame pendente?",
+    "resposta": "Não, se a pendência tiver potencial de mudar conduta: o PROTO-009 exige avaliação médica documentada das pendências antes da alta responsável.",
+    "fonte": "PROTO-009"
+  },
+  {
+    "pergunta": "Como escalonar analgesia para dor intensa?",
+    "resposta": "Dor 7-10 na escala numérica: comunicar o médico para avaliação de opioide e reavaliar em 30-60 minutos após a medicação (PROTO-010). O assistente não define fármaco nem dose.",
+    "fonte": "PROTO-010"
+  },
+  {
+    "pergunta": "Qual o prazo para comunicar um potássio de 6,8 mEq/L?",
+    "resposta": "Potássio > 6,5 mEq/L é valor crítico: comunicação ao médico responsável em até 30 minutos com registro do receptor, conforme PROTO-011.",
+    "fonte": "PROTO-011"
+  },
+  {
+    "pergunta": "O que fazer se a sugestão de tratamento conflita com alergia registrada?",
+    "resposta": "O PROTO-012 determina bloqueio e dupla checagem: o conflito deve ser sinalizado ao prescritor antes de qualquer decisão. Sistemas automatizados nunca prescrevem; apenas alertam.",
+    "fonte": "PROTO-012"
+  },
+  {
+    "pergunta": "O assistente virtual pode prescrever um antibiótico direto para o paciente?",
+    "resposta": "Não. Por limite de segurança institucional, o assistente nunca prescreve medicamentos nem define posologia. Ele pode indicar o protocolo aplicável e sugerir avaliação, mas toda prescrição exige validação humana de um médico.",
+    "fonte": "politica_seguranca"
+  },
+  {
+    "pergunta": "O assistente pode dar diagnóstico definitivo?",
+    "resposta": "Não. O assistente oferece apoio à decisão com base em protocolos e literatura, citando fontes, mas o diagnóstico definitivo é ato médico que exige avaliação clínica humana.",
+    "fonte": "politica_seguranca"
+  }
+]

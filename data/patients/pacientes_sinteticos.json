@@ -1,0 +1,178 @@
+[
+  {
+    "id": "PAC-001",
+    "sexo": "F",
+    "idade": 58,
+    "alergias": "penicilina",
+    "comorbidades": "hipertensão; diabetes tipo 2",
+    "medicamentos_em_uso": "metformina; losartana",
+    "hipotese_diagnostica": "nódulo mamário em investigação (BI-RADS 4)",
+    "setor": "ambulatorio",
+    "exames": [
+      {
+        "nome": "mamografia",
+        "status": "liberado",
+        "resultado": "BI-RADS 4 — nódulo espiculado QSE mama direita",
+        "critico": false
+      },
+      {
+        "nome": "biópsia por agulha grossa",
+        "status": "pendente",
+        "resultado": null,
+        "critico": false
+      },
+      {
+        "nome": "glicemia de jejum",
+        "status": "liberado",
+        "resultado": "142 mg/dL",
+        "critico": false
+      }
+    ],
+    "prescricoes_pendentes": [
+      "Solicitação de biópsia aguardando validação do mastologista"
+    ]
+  },
+  {
+    "id": "PAC-002",
+    "sexo": "M",
+    "idade": 67,
+    "alergias": "",
+    "comorbidades": "insuficiência cardíaca; fibrilação atrial",
+    "medicamentos_em_uso": "varfarina; carvedilol; furosemida",
+    "hipotese_diagnostica": "descompensação de IC em investigação",
+    "setor": "enfermaria",
+    "exames": [
+      {
+        "nome": "INR",
+        "status": "liberado",
+        "resultado": "5.8",
+        "critico": true
+      },
+      {
+        "nome": "BNP",
+        "status": "coletado",
+        "resultado": null,
+        "critico": false
+      },
+      {
+        "nome": "radiografia de tórax",
+        "status": "pendente",
+        "resultado": null,
+        "critico": false
+      }
+    ],
+    "prescricoes_pendentes": [
+      "Ajuste de anticoagulação aguardando avaliação médica"
+    ]
+  },
+  {
+    "id": "PAC-003",
+    "sexo": "F",
+    "idade": 74,
+    "alergias": "dipirona",
+    "comorbidades": "DPOC",
+    "medicamentos_em_uso": "formoterol; budesonida",
+    "hipotese_diagnostica": "pneumonia adquirida na comunidade",
+    "setor": "emergencia",
+    "exames": [
+      {
+        "nome": "lactato",
+        "status": "liberado",
+        "resultado": "4.2 mmol/L",
+        "critico": true
+      },
+      {
+        "nome": "hemocultura (2 amostras)",
+        "status": "coletado",
+        "resultado": null,
+        "critico": false
+      },
+      {
+        "nome": "gasometria arterial",
+        "status": "pendente",
+        "resultado": null,
+        "critico": false
+      }
+    ],
+    "prescricoes_pendentes": [
+      "Esquema antibiótico empírico aguardando validação do plantonista"
+    ]
+  },
+  {
+    "id": "PAC-004",
+    "sexo": "M",
+    "idade": 45,
+    "alergias": "",
+    "comorbidades": "",
+    "medicamentos_em_uso": "",
+    "hipotese_diagnostica": "dor torácica atípica em observação",
+    "setor": "emergencia",
+    "exames": [
+      {
+        "nome": "ECG 12 derivações",
+        "status": "liberado",
+        "resultado": "sem supra de ST",
+        "critico": false
+      },
+      {
+        "nome": "troponina (3h)",
+        "status": "pendente",
+        "resultado": null,
+        "critico": false
+      }
+    ],
+    "prescricoes_pendentes": []
+  },
+  {
+    "id": "PAC-005",
+    "sexo": "F",
+    "idade": 62,
+    "alergias": "contraste iodado",
+    "comorbidades": "doença renal crônica (TFG 38)",
+    "medicamentos_em_uso": "metformina; enalapril",
+    "hipotese_diagnostica": "avaliação pré-operatória de colecistectomia",
+    "setor": "ambulatorio",
+    "exames": [
+      {
+        "nome": "creatinina",
+        "status": "liberado",
+        "resultado": "1.8 mg/dL",
+        "critico": false
+      },
+      {
+        "nome": "tomografia de abdome com contraste",
+        "status": "pendente",
+        "resultado": null,
+        "critico": false
+      }
+    ],
+    "prescricoes_pendentes": [
+      "Preparo renal pré-contraste aguardando validação"
+    ]
+  },
+  {
+    "id": "PAC-006",
+    "sexo": "M",
+    "idade": 71,
+    "alergias": "",
+    "comorbidades": "hipertensão; tabagismo",
+    "medicamentos_em_uso": "anlodipino",
+    "hipotese_diagnostica": "suspeita de AVC isquêmico — início dos sintomas há 2h",
+    "setor": "emergencia",
+    "exames": [
+      {
+        "nome": "TC de crânio sem contraste",
+        "status": "pendente",
+        "resultado": null,
+        "critico": false
+      },
+      {
+        "nome": "glicemia capilar",
+        "status": "liberado",
+        "resultado": "98 mg/dL",
+        "critico": false
+      }
+    ],
+    "prescricoes_pendentes": []
+  }
+]

@@ -1,0 +1,18 @@
+# ── Fase 3 — Assistente Médico (LangChain / LangGraph) ────────────
+langchain>=0.3
+langchain-core>=0.3
+langchain-community>=0.3
+langchain-ollama>=0.2
+langgraph>=0.2
+
+# ── Dataset + fine-tuning ─────────────────────────────────────────
+datasets>=2.19
+huggingface_hub>=0.23
+
+# Fine-tuning LoRA em Apple Silicon (Mac M-series)
+mlx>=0.21; platform_machine == "arm64" and sys_platform == "darwin"
+mlx-lm>=0.21; platform_machine == "arm64" and sys_platform == "darwin"
+
+# ── Utilitários ───────────────────────────────────────────────────
+python-dotenv>=1.0
+pytest>=7.4
