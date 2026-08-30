@@ -5,14 +5,14 @@
   "valid": 80,
   "test": 80,
   "paths": {
-    "train": "/Users/gustavoscarpim/Documents/projetos/fiap/iadt/iadt-tech-challenge-3/data/training/train.jsonl",
-    "valid": "/Users/gustavoscarpim/Documents/projetos/fiap/iadt/iadt-tech-challenge-3/data/training/valid.jsonl",
-    "test": "/Users/gustavoscarpim/Documents/projetos/fiap/iadt/iadt-tech-challenge-3/data/training/test.jsonl"
+    "train": "data/training/train.jsonl",
+    "valid": "data/training/valid.jsonl",
+    "test": "data/training/test.jsonl"
   },
   "hospital_docs": {
-    "protocolos.json": "/Users/gustavoscarpim/Documents/projetos/fiap/iadt/iadt-tech-challenge-3/data/hospital/protocolos.json",
-    "faq_medicos.json": "/Users/gustavoscarpim/Documents/projetos/fiap/iadt/iadt-tech-challenge-3/data/hospital/faq_medicos.json",
-    "templates_documentos.json": "/Users/gustavoscarpim/Documents/projetos/fiap/iadt/iadt-tech-challenge-3/data/hospital/templates_documentos.json"
+    "protocolos.json": "data/hospital/protocolos.json",
+    "faq_medicos.json": "data/hospital/faq_medicos.json",
+    "templates_documentos.json": "data/hospital/templates_documentos.json"
   },
-  "raw_cache": "/Users/gustavoscarpim/Documents/projetos/fiap/iadt/iadt-tech-challenge-3/data/raw/curadoria_bruta.jsonl"
+  "raw_cache": "data/raw/curadoria_bruta.jsonl"
 }

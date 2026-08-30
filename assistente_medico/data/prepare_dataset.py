@@ -20,6 +20,7 @@ from typing import Any
 
 from assistente_medico.config import (
     RAW_DATA_DIR,
+    ROOT,
     TRAINING_DATA_DIR,
     ensure_dirs,
 )
@@ -110,6 +111,14 @@ def _write_jsonl(path: Path, records: list[dict[str, Any]]) -> None:
             f.write(json.dumps(rec, ensure_ascii=False) + "\n")
 
 
+def _path_for_stats(path: Path) -> str:
+    """Usa caminho relativo ao projeto quando possível, evitando paths da máquina."""
+    try:
+        return path.resolve().relative_to(ROOT.resolve()).as_posix()
+    except ValueError:
+        return str(path)
+
+
 def prepare_dataset(
     max_pubmedqa: int = 800,
     seed: int = 42,
@@ -171,9 +180,9 @@ def prepare_dataset(
         "train": len(train),
         "valid": len(valid),
         "test": len(test),
-        "paths": {k: str(v) for k, v in paths.items()},
-        "hospital_docs": {k: str(v) for k, v in hospital_paths.items()},
-        "raw_cache": str(raw_path),
+        "paths": {k: _path_for_stats(v) for k, v in paths.items()},
+        "hospital_docs": {k: _path_for_stats(v) for k, v in hospital_paths.items()},
+        "raw_cache": _path_for_stats(raw_path),
     }
     stats_path = out_dir / "dataset_stats.json"
     stats_path.write_text(json.dumps(stats, ensure_ascii=False, indent=2), encoding="utf-8")
